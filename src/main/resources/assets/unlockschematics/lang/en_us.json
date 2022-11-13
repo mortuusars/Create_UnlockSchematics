@@ -1,0 +1,8 @@
+{
+  "message.unlockschematics.no_folder_permissions": "Cannot unlock schematic: no permissions to read/write in this folder.",
+  "message.unlockschematics.no_locked_schematics_available": "No locked schematics available.",
+  "message.unlockschematics.schematic_does_not_exist": "Schematic \"%s\" does not exist.",
+  "message.unlockschematics.schematic_unlocked": "Schematic unlocked: %s",
+  "message.unlockschematics.failed_to_unlock": "Failed to unlock schematic. See log for details.",
+  "message.unlockschematics.schematic_already_unlocked": "Schematic \"%s\" is already unlocked."
+}
