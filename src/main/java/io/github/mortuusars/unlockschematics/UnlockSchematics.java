@@ -7,7 +7,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -63,14 +63,14 @@ public class UnlockSchematics
             Files.createDirectories(lockedConfigPath);
 
             if (!Files.isReadable(lockedConfigPath)) {
-                player.sendMessage(new TranslatableComponent("message.unlockschematics.no_folder_permissions")
-                        .withStyle(ChatFormatting.DARK_RED), Util.NIL_UUID);
+                player.displayClientMessage(Component.translatable("message.unlockschematics.no_folder_permissions")
+                        .withStyle(ChatFormatting.DARK_RED), false);
                 return;
             }
 
 //            if (!Files.exists(lockedConfigPath)) {
-//                player.sendMessage(new TranslatableComponent("message.unlockschematics.no_locked_schematics_available")
-//                        .withStyle(ChatFormatting.DARK_RED), Util.NIL_UUID);
+//                player.sendMessage(Component.translatable("message.unlockschematics.no_locked_schematics_available")
+//                        .withStyle(ChatFormatting.DARK_RED), false);
 //                return;
 //            }
 
@@ -78,27 +78,27 @@ public class UnlockSchematics
             Path unlockedSchematicFilePath = configPath.resolve(schematicFileName);
 
             if (Files.exists(unlockedSchematicFilePath)) {
-                player.sendMessage(new TranslatableComponent("message.unlockschematics.schematic_already_unlocked", schematicPrettyName), Util.NIL_UUID);
+                player.displayClientMessage(Component.translatable("message.unlockschematics.schematic_already_unlocked", schematicPrettyName), false);
                 return;
             }
 
             if (!Files.exists(schematicFilePath)) {
-                player.sendMessage(new TranslatableComponent("message.unlockschematics.schematic_does_not_exist", schematic)
-                        .withStyle(ChatFormatting.DARK_RED), Util.NIL_UUID);
+                player.displayClientMessage(Component.translatable("message.unlockschematics.schematic_does_not_exist", schematic)
+                        .withStyle(ChatFormatting.DARK_RED), false);
                 return;
             }
 
             Files.copy(schematicFilePath, unlockedSchematicFilePath, StandardCopyOption.REPLACE_EXISTING);
             Files.delete(schematicFilePath);
 
-            player.sendMessage(new TranslatableComponent("message.unlockschematics.schematic_unlocked", schematicPrettyName)
-                    .withStyle(ChatFormatting.DARK_GREEN), Util.NIL_UUID);
+            player.displayClientMessage(Component.translatable("message.unlockschematics.schematic_unlocked", schematicPrettyName)
+                    .withStyle(ChatFormatting.DARK_GREEN), false);
         }
         catch (IOException e) {
             LOGGER.error("Failed to unlock schematic: {}\n{}", schematic, e.toString());
 
-            player.sendMessage(new TranslatableComponent("message.unlockschematics.failed_to_unlock")
-                    .withStyle(ChatFormatting.DARK_RED), Util.NIL_UUID);
+            player.displayClientMessage(Component.translatable("message.unlockschematics.failed_to_unlock")
+                    .withStyle(ChatFormatting.DARK_RED), false);
         }
     }
 

@@ -1,5 +1,5 @@
 {
-  "message.unlockschematics.no_folder_permissions": "Неможливо розблокувати схему: немає прав на читання/запис. Cannot unlock schematic: no permissions to read/write in the folder.",
+  "message.unlockschematics.no_folder_permissions": "Неможливо розблокувати схему: немає прав на читання/запис.",
   "message.unlockschematics.no_locked_schematics_available": "Немає жодної нерозблокованої схеми.",
   "message.unlockschematics.schematic_does_not_exist": "Схеми \"%s\" не існує.",
   "message.unlockschematics.schematic_unlocked": "Схему розблоковано: %s",
